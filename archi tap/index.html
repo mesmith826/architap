@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>ArchiTap NYC</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="header-left">
+      <h1 class="logo">ArchiTap <span class="logo-nyc">NYC</span></h1>
+    </div>
+    <div class="header-center">
+      <span id="puzzle-number" class="pill">Puzzle #1</span>
+    </div>
+    <div class="header-right">
+      <span id="total-score" class="score-display">0</span>
+    </div>
+  </header>
+
+  <!-- Round indicator -->
+  <div id="round-bar">
+    <div class="round-dots">
+      <span class="round-dot" data-round="0"></span>
+      <span class="round-dot" data-round="1"></span>
+      <span class="round-dot" data-round="2"></span>
+      <span class="round-dot" data-round="3"></span>
+      <span class="round-dot" data-round="4"></span>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- Clue panel -->
+  <div id="clue-panel">
+    <div id="round-info">
+      <span id="round-label">Round 1 / 5</span>
+      <span id="multiplier-badge">1x</span>
+    </div>
+    <div id="category-badge-wrap">
+      <span id="category-badge"></span>
+    </div>
+    <p id="clue-text">Tap anywhere to start the daily puzzle!</p>
+    <div id="clue-actions">
+      <button id="btn-hint" class="btn btn-secondary" style="display:none">Next Clue (-10 pts)</button>
+      <button id="btn-confirm" class="btn btn-primary" style="display:none">Confirm Guess</button>
+    </div>
+  </div>
+
+  <!-- Result overlay (per-round) -->
+  <div id="result-overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <h2 id="result-name"></h2>
+      <p id="result-year"></p>
+      <p id="result-detail"></p>
+      <div class="result-stats">
+        <div class="stat">
+          <span class="stat-value" id="result-distance"></span>
+          <span class="stat-label">Distance</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="result-score"></span>
+          <span class="stat-label">Points</span>
+        </div>
+      </div>
+      <button id="btn-next" class="btn btn-primary">Next Round</button>
+    </div>
+  </div>
+
+  <!-- Summary overlay (end game) -->
+  <div id="summary-overlay" class="overlay hidden">
+    <div class="overlay-content summary-content">
+      <h2>Puzzle Complete!</h2>
+      <div id="summary-total" class="summary-score"></div>
+      <div id="summary-max" class="summary-max"></div>
+      <div id="summary-rounds"></div>
+      <button id="btn-share" class="btn btn-primary">Copy Results</button>
+      <p id="share-confirm" class="share-confirm hidden">Copied!</p>
+      <div id="countdown-wrap">
+        <p>Next puzzle in</p>
+        <span id="countdown"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Already played overlay -->
+  <div id="played-overlay" class="overlay hidden">
+    <div class="overlay-content summary-content">
+      <h2>Already Played Today!</h2>
+      <div id="played-total" class="summary-score"></div>
+      <div id="played-max" class="summary-max"></div>
+      <div id="played-rounds"></div>
+      <button id="btn-share-played" class="btn btn-primary">Copy Results</button>
+      <p id="share-confirm-played" class="share-confirm hidden">Copied!</p>
+      <div id="countdown-wrap-played">
+        <p>Next puzzle in</p>
+        <span id="countdown-played"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="landmarks.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
